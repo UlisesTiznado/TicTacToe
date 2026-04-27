@@ -1,0 +1,44 @@
+/* Estilo general del body */
+body {
+    font-family: Arial; /* Tipo de letra */
+    text-align: center; /* Centrar contenido */
+    background-color: #222; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+}
+
+/* Contenedor del tablero */
+.board {
+    display: grid; /* Uso de grid */
+    grid-template-columns: repeat(3, 100px); /* 3 columnas */
+    grid-template-rows: repeat(3, 100px); /* 3 filas */
+    margin: 20px auto; /* Centrado */
+    gap: 5px; /* Espacio entre celdas */
+}
+
+/* Estilo de cada celda */
+.cell {
+    width: 100px; /* Ancho */
+    height: 100px; /* Alto */
+    display: flex; /* Flexbox */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    font-size: 40px; /* Tamaño texto */
+    cursor: pointer; /* Cursor tipo botón */
+    border: 2px solid white; /* Línea del tablero */
+}
+
+/* Imagen dentro de celda */
+.cell img {
+    width: 80%; /* Escala imagen */
+}
+
+/* Panel de configuración */
+.config {
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Temporizador */
+#timer {
+    font-size: 24px; /* Tamaño texto */
+    margin-top: 10px; /* Espacio superior */
+}
