@@ -1,44 +1,166 @@
-/* Estilo general del body */
+/* ====== RESET GENERAL ====== */
 body {
-    font-family: Arial; /* Tipo de letra */
-    text-align: center; /* Centrar contenido */
-    background-color: #222; /* Fondo oscuro */
-    color: white; /* Texto blanco */
-}
-
-/* Contenedor del tablero */
-.board {
-    display: grid; /* Uso de grid */
-    grid-template-columns: repeat(3, 100px); /* 3 columnas */
-    grid-template-rows: repeat(3, 100px); /* 3 filas */
-    margin: 20px auto; /* Centrado */
-    gap: 5px; /* Espacio entre celdas */
-}
-
-/* Estilo de cada celda */
-.cell {
-    width: 100px; /* Ancho */
-    height: 100px; /* Alto */
+    font-family: Arial, sans-serif; /* Fuente */
+    background: linear-gradient(135deg, #1e1e2f, #2c2c54); /* Fondo */
+    color: white; /* Texto */
+    
     display: flex; /* Flexbox */
-    align-items: center; /* Centrado vertical */
-    justify-content: center; /* Centrado horizontal */
-    font-size: 40px; /* Tamaño texto */
-    cursor: pointer; /* Cursor tipo botón */
-    border: 2px solid white; /* Línea del tablero */
+    flex-direction: column; /* Orden vertical */
+    align-items: center; /* Centrado horizontal */
+    
+    min-height: 100vh; /* 🔥 Permite crecer (NO fijo) */
+    margin: 0; /* Quitar margen */
+    padding: 20px; /* Espacio para que no se corte */
 }
 
-/* Imagen dentro de celda */
-.cell img {
-    width: 80%; /* Escala imagen */
+/* ====== TITULO PRINCIPAL ====== */
+h1 {
+    font-family: 'Orbitron', sans-serif; /* Fuente futurista */
+    font-size: 42px; /* Tamaño grande */
+    letter-spacing: 3px; /* Espaciado */
+    margin-bottom: 5px; /* Espacio */
+    
+    color: #000000; /* Color base */
+    
+    text-shadow: 
+        0 0 5px #00c6ff, 
+        0 0 10px #00c6ff, 
+        0 0 20px #0072ff; /* Glow */
 }
 
-/* Panel de configuración */
+/* ====== SUBTITULOS ====== */
+h4 {
+    font-family: 'Poppins', sans-serif; /* Fuente limpia */
+    font-weight: 300; /* Ligera */
+    font-size: 16px; /* Tamaño */
+    color: #ddd; /* Gris suave */
+    margin: 3px;
+}
+
+/* Texto secundario especial */
+h4:nth-of-type(2) {
+    color: #00c6ff; /* Azul para destacar */
+    font-weight: 500;
+}
+
+/* ====== PANEL CONFIG ====== */
 .config {
-    margin-bottom: 20px; /* Espacio inferior */
+    background: rgba(255,255,255,0.05); /* Fondo semi transparente */
+    padding: 15px; /* Espacio interno */
+    border-radius: 15px; /* Bordes redondeados */
+    margin: 15px; /* Margen */
+    display: flex; /* Flex */
+    gap: 10px; /* Espacio entre elementos */
+    flex-wrap: wrap; /* Ajuste automático */
+    justify-content: center; /* Centrado */
 }
 
-/* Temporizador */
+/* ====== BOTONES ====== */
+button {
+    background: linear-gradient(135deg, #00c6ff, #0072ff); /* Degradado */
+    border: none; /* Sin borde */
+    color: white; /* Texto */
+    padding: 10px 15px; /* Espacio interno */
+    border-radius: 10px; /* Bordes */
+    cursor: pointer; /* Mano */
+    transition: 0.3s; /* Animación */
+}
+
+button:hover {
+    transform: scale(1.1); /* Zoom */
+}
+
+/* ====== TABLERO ====== */
+.board {
+    display: grid; /* Grid */
+    grid-template-columns: repeat(3, 110px); /* Columnas */
+    grid-template-rows: repeat(3, 110px); /* Filas */
+    gap: 8px; /* Espacio */
+    justify-content: center; /* Centrado */
+    align-items: center; /* Centrado */
+    margin: 20px; /* Margen */
+}
+
+/* ====== CELDAS ====== */
+.cell {
+    width: 110px; /* Tamaño */
+    height: 110px; /* Tamaño */
+    display: flex; /* Flex */
+    align-items: center; /* Centro vertical */
+    justify-content: center; /* Centro horizontal */
+    border-radius: 15px; /* Bordes */
+    border: 2px solid white; /* Línea */
+    cursor: pointer; /* Click */
+    transition: 0.3s; /* Animación */
+}
+
+/* Hover celda */
+.cell:hover {
+    transform: scale(1.05); /* Zoom */
+}
+
+/* ====== IMAGEN ====== */
+.cell img {
+    width: 70%; /* Tamaño */
+    height: 70%; /* Tamaño */
+    object-fit: contain; /* Ajuste */
+    animation: pop 0.3s ease; /* Animación */
+}
+
+/* Animación de aparición */
+@keyframes pop {
+    from {
+        transform: scale(0); /* Inicio */
+        opacity: 0; /* Invisible */
+    }
+    to {
+        transform: scale(1); /* Final */
+        opacity: 1; /* Visible */
+    }
+}
+
+/* ====== TIMER ====== */
 #timer {
-    font-size: 24px; /* Tamaño texto */
-    margin-top: 10px; /* Espacio superior */
+    font-size: 26px; /* Tamaño */
+    margin-top: 10px; /* Espacio */
+}
+
+/* ====== MODAL (GANADOR/EMPATE) ====== */
+.modal {
+    position: fixed; /* Fijo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7); /* Fondo oscuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden; /* Oculto */
+}
+
+/* Contenido del modal */
+.modal-content {
+    background: #2c2c54; /* Fondo */
+    padding: 30px; /* Espacio */
+    border-radius: 15px; /* Bordes */
+    text-align: center; /* Centrado */
+    animation: fadeIn 0.4s ease; /* Animación */
+}
+
+/* Animación modal */
+@keyframes fadeIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mostrar modal */
+.modal.show {
+    visibility: visible;
 }

@@ -50,6 +50,7 @@ function startGame() {
     gameActive = true;
     currentPlayer = "X";
     startTimer();
+    document.getElementById("modal").classList.remove("show");
 }
 
 function makeMove(index, cell) {
@@ -85,20 +86,22 @@ function checkDraw() {
     return board.every(cell => cell !== "");
 }
 
-//  MOSTRAR GANADOR 
 function showWinner(set) {
-    const msg = document.getElementById("message");
     const winnerName = names[set][currentPlayer];
 
-    msg.textContent = `Ganó ${winnerName}`;
+    const modal = document.getElementById("modal");
+    const text = document.getElementById("modalText");
+
+    text.textContent = `🏆 Ganó ${winnerName}`;
+    modal.classList.add("show");
 }
 
-
 function showDraw() {
-    const msg = document.getElementById("message");
-    msg.textContent = "Empate";
+    const modal = document.getElementById("modal");
+    const text = document.getElementById("modalText");
 
-    document.getElementById("restartBtn").style.display = "inline-block";
+    text.textContent = "🤝 Empate";
+    modal.classList.add("show");
 }
 
 // CHECK GANADOR
